@@ -9,23 +9,29 @@ buildscript {
     }
 }
 
+def getVersionName() {
+    return "1.0.0"
+}
+
+def getVersionCode() {
+    return 3
+}
+
+def isReleaseBuild() {
+    return getVersionName().contains("SNAPSHOT") == false
+}
+
+def getSonatypeRepositoryUrl() {
+    if (isReleaseBuild()) {
+        return "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+    } else {
+        return "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
+}
+
 allprojects {
     repositories {
         mavenCentral()
-    }
-
-    /*
-     * Gets a property from a configuration file. That file should define the following properties:
-     * - repositoryUrl
-     * - user
-     * - password
-     */
-    ext.getSonatypeRepositoryProperties = {
-        def String path = System.getenv("ANDROID_PRIVATE_PROPERTIES_PATH")
-        def File sonatypeFile = new File(path + "/" + rootProject.name + ".sonatype.properties");
-        def Properties properties  = new Properties();
-        properties .load(new FileInputStream(sonatypeFile))
-        return properties;
     }
 
     /*
@@ -37,9 +43,10 @@ allprojects {
      */
     ext.getSigningProperties = {
         def String path = System.getenv("ANDROID_PRIVATE_PROPERTIES_PATH")
-        def File file = new File(path + "/" + rootProject.name + ".signing.properties");
+        def File file = new File(path + "/" + rootProject.name + "/keystore.properties");
         def Properties properties  = new Properties();
-        properties .load(new FileInputStream(file))
+        properties.load(new FileInputStream(file))
+        properties.put("storeFile", path + "/" + rootProject.name + "/project.keystore")
         return properties;
     }
 }
