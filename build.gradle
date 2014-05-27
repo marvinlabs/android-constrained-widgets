@@ -1,0 +1,45 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.9.+'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    /*
+     * Gets a property from a configuration file. That file should define the following properties:
+     * - repositoryUrl
+     * - user
+     * - password
+     */
+    ext.getSonatypeRepositoryProperties = {
+        def String path = System.getenv("ANDROID_PRIVATE_PROPERTIES_PATH")
+        def File sonatypeFile = new File(path + "/" + rootProject.name + ".sonatype.properties");
+        def Properties properties  = new Properties();
+        properties .load(new FileInputStream(sonatypeFile))
+        return properties;
+    }
+
+    /*
+     * Gets a property from a configuration file. That file should define the following properties:
+     * - storeFile
+     * - storePassword
+     * - keyAlias
+     * - keyPassword
+     */
+    ext.getSigningProperties = {
+        def String path = System.getenv("ANDROID_PRIVATE_PROPERTIES_PATH")
+        def File file = new File(path + "/" + rootProject.name + ".signing.properties");
+        def Properties properties  = new Properties();
+        properties .load(new FileInputStream(file))
+        return properties;
+    }
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="activity_demolist" type="layout">@layout/activity_singlepane</item>
+    <item name="activity_demo" type="layout">@layout/activity_singlepane</item>
+    <bool name="has_two_panes">false</bool>
+</resources>

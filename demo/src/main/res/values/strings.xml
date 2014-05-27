@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MarvinLabs Widgets Demo</string>
+
+    <string name="demo_aspectratio">Aspect ratio layouts</string>
+    <string name="demo_aspectratio_widescreen">This is 16/9</string>
+    <string name="demo_aspectratio_tallscreen">This is 9/16</string>
+    <string name="demo_aspectratio_square">This is square</string>
+</resources>
