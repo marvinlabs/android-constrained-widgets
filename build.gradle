@@ -9,16 +9,16 @@ buildscript {
     }
 }
 
-def getVersionName() {
-    return "1.0.0"
+def getAppVersionName() {
+    return "1.0.1"
 }
 
-def getVersionCode() {
-    return 3
+def getAppVersionCode() {
+    return 4
 }
 
 def isReleaseBuild() {
-    return getVersionName().contains("SNAPSHOT") == false
+    return getAppVersionName().contains("SNAPSHOT") == false
 }
 
 def getSonatypeRepositoryUrl() {

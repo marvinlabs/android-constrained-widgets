@@ -23,8 +23,8 @@ android {
     defaultConfig {
         minSdkVersion 7
         targetSdkVersion 19
-        versionCode getVersionCode()
-        versionName getVersionName()
+        versionCode getAppVersionCode()
+        versionName getAppVersionName()
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_6
@@ -33,7 +33,7 @@ android {
 }
 
 group = "com.marvinlabs"
-version = getVersionName()
+version = getAppVersionName()
 
 android.libraryVariants.all { variant ->
     def name = variant.buildType.name
