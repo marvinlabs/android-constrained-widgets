@@ -19,8 +19,8 @@ android {
         packageName "com.marvinlabs.widget.constrained.demo"
         minSdkVersion 7
         targetSdkVersion 19
-        versionCode getVersionCode()
-        versionName getVersionName()
+        versionCode getAppVersionCode()
+        versionName getAppVersionName()
     }
 
     buildTypes {
