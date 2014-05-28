@@ -14,6 +14,16 @@ A demo of the widget is worth a thousand words. You can download it for free on 
          src="http://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
 </a>
 
+## Usage 
+
+The easiest way to get the library included in your project is by using Gradle. Simply add the following line to your dependencies block:
+
+    dependencies {
+        compile 'com.marvinlabs:android-constrained-widgets:1.1.+@aar'
+    }
+    
+Of course, you can replace the version number by whichever version you need (you can have a look at this repository's tags to know which is the latest).
+
 ## About Vincent & MarvinLabs
 
 I am a freelance developer located in Biarritz, France. You can [have a look at my website](http://vincentprat.info) to get to know me a little better. If you want to follow me, here are some links:
