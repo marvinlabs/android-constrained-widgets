@@ -19,7 +19,7 @@ A demo of the widget is worth a thousand words. You can download it for free on 
 The easiest way to get the library included in your project is by using Gradle. Simply add the following line to your dependencies block:
 
     dependencies {
-        compile 'com.marvinlabs:android-constrained-widgets:1.0.+@aar'
+        compile 'com.marvinlabs:android-constrained-widgets:1.1.+@aar'
     }
     
 Of course, you can replace the version number by whichever version you need (you can have a look at this repository's tags to know which is the latest).
