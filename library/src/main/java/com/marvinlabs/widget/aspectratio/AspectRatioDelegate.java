@@ -86,7 +86,7 @@ public class AspectRatioDelegate {
      * @param widthMeasureSpec
      * @param heightMeasureSpec
      */
-    void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int originalWidth = View.MeasureSpec.getSize(widthMeasureSpec);
         int originalHeight = View.MeasureSpec.getSize(heightMeasureSpec);
 

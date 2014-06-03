@@ -1,9 +1,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".DemoActivity">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".DemoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/demo_aspectratio_widescreen" />
+                android:text="@string/demo_aspectratio_widescreen"/>
 
         </com.marvinlabs.widget.aspectratio.ConstrainedRelativeLayout>
 
@@ -42,8 +42,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/demo_aspectratio_square" />
+                android:text="@string/demo_aspectratio_square"/>
 
         </com.marvinlabs.widget.aspectratio.ConstrainedLinearLayout>
+
+        <com.marvinlabs.widget.aspectratio.ConstrainedImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dip"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_square_image"
+            app:aspectRatioHeight="9"
+            app:aspectRatioWidth="16"
+            app:fixedDimension="width"/>
     </LinearLayout>
 </ScrollView>
