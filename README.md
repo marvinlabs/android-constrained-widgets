@@ -20,7 +20,7 @@ The easiest way to get the library included in your project is by using Gradle. 
 following line to your dependencies block:
 
     dependencies {
-        compile 'com.marvinlabs:android-constrained-widgets:1.1.+@aar'
+        compile 'com.marvinlabs:android-constrained-widgets:1.2.+@aar'
     }
     
 Of course, you can replace the version number by whichever version you need (you can have a look at 
