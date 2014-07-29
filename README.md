@@ -28,6 +28,7 @@ this repository's tags to know which is the latest).
 
 You can then integrate the widgets in your layouts in XML like that:
 
+```XML
     <!-- Define the app namespace in the root layout: 
           xmlns:app="http://schemas.android.com/apk/res-auto" -->
 
@@ -40,6 +41,7 @@ You can then integrate the widgets in your layouts in XML like that:
             app:aspectRatioWidth="16"
             app:aspectRatioHeight="9"
             app:fixedDimension="width">
+```
 
 ## Changelog
 
