@@ -26,6 +26,21 @@ following line to your dependencies block:
 Of course, you can replace the version number by whichever version you need (you can have a look at 
 this repository's tags to know which is the latest).
 
+You can then integrate the widgets in your layouts in XML like that:
+
+    <!-- Define the app namespace in the root layout: 
+          xmlns:app="http://schemas.android.com/apk/res-auto" -->
+
+    <!-- Below is a 16/9 image that will use the whole available width -->
+
+    <com.marvinlabs.widget.aspectratio.ConstrainedImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:aspectRatioWidth="16"
+            app:aspectRatioHeight="9"
+            app:fixedDimension="width">
+
 ## Changelog
 
 ### 1.2.0 
