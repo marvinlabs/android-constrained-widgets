@@ -40,5 +40,5 @@ public class ConstrainedLinearLayout extends LinearLayout implements AspectRatio
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
-    private AspectRatioDelegate aspectRatioDelegate;
+    private final AspectRatioDelegate aspectRatioDelegate;
 }

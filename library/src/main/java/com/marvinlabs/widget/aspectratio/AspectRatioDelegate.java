@@ -11,10 +11,12 @@ import com.marvinlabs.widget.constrained.R;
 
 /**
  * Class to do most of the work for views that should be constrained to a given aspect ratio
- * <p/>
+ *
  * Created by vprat on 23/05/2014.
  */
 public class AspectRatioDelegate {
+
+    public static boolean DEBUG = false;
 
     /**
      * Interface to be implemented by the views that we should constrain
@@ -23,8 +25,11 @@ public class AspectRatioDelegate {
 
         /**
          * Implementations should simply make a call to parent.onMeasure(widthMeasureSpec, heightMeasureSpec)
+         *
+         * @param widthMeasureSpec  Width measurement specification
+         * @param heightMeasureSpec Height measurement specification
          */
-        public void callParentOnMeasure(int widthMeasureSpec, int heightMeasureSpec);
+        void callParentOnMeasure(int widthMeasureSpec, int heightMeasureSpec);
     }
 
     /**
@@ -33,7 +38,7 @@ public class AspectRatioDelegate {
      */
     public enum FixedDimension {
         WIDTH(1), HEIGHT(2);
-        int id;
+        final int id;
 
         FixedDimension(int id) {
             this.id = id;
@@ -60,6 +65,7 @@ public class AspectRatioDelegate {
      * Constructor from the view attributes
      *
      * @param parent The view to constrain
+     * @param attrs Style attributes
      */
     public AspectRatioDelegate(ConstrainedView parent, AttributeSet attrs) {
         this(parent);
@@ -83,8 +89,8 @@ public class AspectRatioDelegate {
      * Delegates the onMeasure code for the constrained views. Those views should override their parent's onMeasure method
      * and simply call their delegate's onMeasure method.
      *
-     * @param widthMeasureSpec
-     * @param heightMeasureSpec
+     * @param widthMeasureSpec  Width measurement specification
+     * @param heightMeasureSpec Height measurement specification
      */
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int originalWidth = View.MeasureSpec.getSize(widthMeasureSpec);
@@ -108,7 +114,9 @@ public class AspectRatioDelegate {
                 finalHeight = originalHeight;
         }
 
-        Log.d("", "View measure is now: " + finalWidth + " x " + finalHeight);
+        if (DEBUG) {
+            Log.d("", "View measure is now: " + finalWidth + " x " + finalHeight);
+        }
 
         parent.callParentOnMeasure(
                 View.MeasureSpec.makeMeasureSpec(finalWidth, View.MeasureSpec.EXACTLY),
@@ -159,7 +167,7 @@ public class AspectRatioDelegate {
         this.fixedDimension = fixedDimension;
     }
 
-    private ConstrainedView parent;
+    private final ConstrainedView parent;
     private float aspectRatio;
     private FixedDimension fixedDimension;
 }

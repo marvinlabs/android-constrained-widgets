@@ -1,28 +1,31 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
-        classpath 'com.github.dcendents:android-maven-plugin:1.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4'
+        classpath "gradle.plugin.com.vanniktech:gradle-android-javadoc-plugin:0.2.1"
     }
 }
 
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 apply plugin: 'android-maven'
 apply plugin: 'signing'
+apply plugin: "com.vanniktech.android.javadoc"
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
         minSdkVersion 7
-        targetSdkVersion 19
+        targetSdkVersion 24
         versionCode getAppVersionCode()
         versionName getAppVersionName()
     }
@@ -35,37 +38,18 @@ android {
 group = "com.marvinlabs"
 version = getAppVersionName()
 
-android.libraryVariants.all { variant ->
-    def name = variant.buildType.name
-    if (name.equals(com.android.builder.BuilderConstants.DEBUG)) {
-        return; // Skip debug builds.
-    }
-    task("javadoc${variant.name.capitalize()}", type: Javadoc) {
-        description "Generates Javadoc for $variant.name."
-        source = variant.javaCompile.source
-        ext.androidJar = "${android.plugin.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
-        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
-    }
-
-    task("bundleJavadoc${variant.name.capitalize()}", type: Jar) {
-        description "Bundles Javadoc into zip for $variant.name."
-        classifier = "javadoc"
-        from tasks["javadoc${variant.name.capitalize()}"]
-    }
-}
-
 task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
-    from android.sourceSets.main.java
 }
 
 task jar(type: Jar) {
     from 'build/classes/release'
 }
 
-task javadocJar(type: Jar, dependsOn: "javadocRelease") {
+task javadocJar(type: Jar, dependsOn: "generateReleaseJavadoc") {
     classifier = 'javadoc'
-    from 'build/docs/javadoc'
+    from 'javaDoc'
 }
 
 artifacts {
@@ -76,11 +60,11 @@ artifacts {
 
 task wrapper(type: Wrapper) {
     description "Generates the gradle wrapper"
-    gradleVersion = "1.10"
+    gradleVersion = "2.14"
 }
 
 signing {
-    sign configurations.archives
+    //TODO: sign configurations.archives
 }
 
 uploadArchives {
