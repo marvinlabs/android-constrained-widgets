@@ -4,11 +4,11 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.github.dcendents:android-maven-plugin:1.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4'
     }
 }
 
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 apply plugin: 'android-maven'
 apply plugin: 'signing'
 
@@ -17,12 +17,12 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
         minSdkVersion 7
-        targetSdkVersion 19
+        targetSdkVersion 24
         versionCode getAppVersionCode()
         versionName getAppVersionName()
     }
@@ -37,14 +37,17 @@ version = getAppVersionName()
 
 android.libraryVariants.all { variant ->
     def name = variant.buildType.name
-    if (name.equals(com.android.builder.BuilderConstants.DEBUG)) {
+
+    if (name.equalsIgnoreCase("debug")) {
         return; // Skip debug builds.
     }
     task("javadoc${variant.name.capitalize()}", type: Javadoc) {
         description "Generates Javadoc for $variant.name."
         source = variant.javaCompile.source
-        ext.androidJar = "${android.plugin.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
-        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
+        //ext.androidJar = files(plugins.findPlugin("com.android.library").getBootClasspath())
+        //classpath = files(variant.javaCompile.classpath.files) + ext.androidJar
+        exclude '**/internal/**'
+        failOnError false
     }
 
     task("bundleJavadoc${variant.name.capitalize()}", type: Jar) {
@@ -76,7 +79,7 @@ artifacts {
 
 task wrapper(type: Wrapper) {
     description "Generates the gradle wrapper"
-    gradleVersion = "1.10"
+    gradleVersion = "2.14"
 }
 
 signing {

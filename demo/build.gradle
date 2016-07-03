@@ -1,10 +1,10 @@
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 ext.signingProperties = getSigningProperties()
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     signingConfigs {
         release {
@@ -18,16 +18,16 @@ android {
     }
 
     defaultConfig {
-        packageName "com.marvinlabs.widget.constrained.demo"
+        applicationId "com.marvinlabs.widget.constrained.demo"
         minSdkVersion 7
-        targetSdkVersion 19
+        targetSdkVersion 24
         versionCode getAppVersionCode()
         versionName getAppVersionName()
     }
 
     buildTypes {
         release {
-            runProguard true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             signingConfig signingConfigs.release
         }
@@ -37,5 +37,5 @@ android {
 dependencies {
     compile project(':library')
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:19.1.0'
+    compile 'com.android.support:appcompat-v7:24.0.0'
 }
