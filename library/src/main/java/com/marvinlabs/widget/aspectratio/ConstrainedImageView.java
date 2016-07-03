@@ -38,5 +38,5 @@ public class ConstrainedImageView extends ImageView implements AspectRatioDelega
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
-    private AspectRatioDelegate aspectRatioDelegate;
+    private final AspectRatioDelegate aspectRatioDelegate;
 }

@@ -38,5 +38,5 @@ public class ConstrainedRelativeLayout extends RelativeLayout implements AspectR
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
-    private AspectRatioDelegate aspectRatioDelegate;
+    private final AspectRatioDelegate aspectRatioDelegate;
 }

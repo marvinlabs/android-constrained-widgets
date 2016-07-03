@@ -1,7 +1,6 @@
 package com.marvinlabs.widget.aspectratio;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
@@ -39,5 +38,5 @@ public class ConstrainedFrameLayout extends FrameLayout implements AspectRatioDe
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
-    private AspectRatioDelegate aspectRatioDelegate;
+    private final AspectRatioDelegate aspectRatioDelegate;
 }
