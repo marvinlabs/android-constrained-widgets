@@ -64,7 +64,7 @@ task wrapper(type: Wrapper) {
 }
 
 signing {
-    sign configurations.archives
+    //TODO: sign configurations.archives
 }
 
 uploadArchives {
