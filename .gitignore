@@ -35,3 +35,6 @@ build/
 # Proguard temp
 proguard/dump.txt
 proguard/seeds.txt
+
+# Generated Javadoc
+library/javaDoc

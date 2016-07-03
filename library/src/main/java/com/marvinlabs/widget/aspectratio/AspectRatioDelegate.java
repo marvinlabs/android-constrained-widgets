@@ -11,7 +11,7 @@ import com.marvinlabs.widget.constrained.R;
 
 /**
  * Class to do most of the work for views that should be constrained to a given aspect ratio
- * <p/>
+ *
  * Created by vprat on 23/05/2014.
  */
 public class AspectRatioDelegate {
@@ -25,6 +25,9 @@ public class AspectRatioDelegate {
 
         /**
          * Implementations should simply make a call to parent.onMeasure(widthMeasureSpec, heightMeasureSpec)
+         *
+         * @param widthMeasureSpec  Width measurement specification
+         * @param heightMeasureSpec Height measurement specification
          */
         void callParentOnMeasure(int widthMeasureSpec, int heightMeasureSpec);
     }
@@ -62,6 +65,7 @@ public class AspectRatioDelegate {
      * Constructor from the view attributes
      *
      * @param parent The view to constrain
+     * @param attrs Style attributes
      */
     public AspectRatioDelegate(ConstrainedView parent, AttributeSet attrs) {
         this(parent);
